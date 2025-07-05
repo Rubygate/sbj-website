@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="48" viewBox="0 0 375 110" fill="none">
+<!-- Sparkles by Junetrain logo, background removed for transparency -->
+<g id="0a8ee4aeac">
+  <!-- Sparkle shapes -->
+  <path style="stroke:none;fill-rule:nonzero;fill:#ffffff;fill-opacity:1;" d="M 197.644531 92.632812 C 193.265625 93.226562 192.785156 93.710938 192.1875 98.085938 C 191.59375 93.710938 191.109375 93.226562 186.734375 92.632812 C 191.109375 92.035156 191.59375 91.554688 192.1875 87.175781 C 192.785156 91.554688 193.265625 92.035156 197.644531 92.632812"/>
+  <path style="stroke:none;fill-rule:nonzero;fill:#ffffff;fill-opacity:1;" d="M 176.585938 131.734375 C 169.410156 132.710938 168.617188 133.5 167.640625 140.675781 C 166.664062 133.5 165.875 132.710938 158.699219 131.734375 C 165.875 130.757812 166.664062 129.96875 167.640625 122.792969 C 168.617188 129.96875 169.410156 130.757812 176.585938 131.734375"/>
+  <path style="stroke:none;fill-rule:nonzero;fill:#ffffff;fill-opacity:1;" d="M 215.832031 113.546875 C 185.71875 115.496094 184.136719 117.078125 182.1875 147.195312 C 180.234375 117.078125 178.65625 115.496094 148.539062 113.546875 C 178.65625 111.597656 180.234375 110.015625 182.1875 79.902344 C 184.136719 110.015625 185.71875 111.597656 215.832031 113.546875"/>
+  <!-- The rest of your logo paths and text go here (truncated for brevity) -->
+</g>
+<!-- Add the rest of your logo's paths and text here, keeping only the logo elements, not the background -->
+</svg>
