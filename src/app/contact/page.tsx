@@ -38,8 +38,8 @@ export default function ContactPage() {
               Get in Touch
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Have a question or need assistance? We'd love to hear from you. 
-              Send us a message and we'll respond as soon as possible.
+              Have a question or need assistance? We&apos;d love to hear from you. 
+              Send us a message and we&apos;ll respond as soon as possible.
             </p>
           </div>
         </section>

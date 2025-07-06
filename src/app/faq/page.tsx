@@ -240,7 +240,7 @@ export default function FAQPage() {
           <div className="bg-gradient-to-br from-[#F9CCE3] to-purple-100 rounded-xl p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Still Have Questions?</h2>
             <p className="text-gray-600 mb-8">
-              Can't find the answer you're looking for? Our team is here to help!
+              Can&apos;t find the answer you&apos;re looking for? Our team is here to help!
             </p>
             <div className="flex justify-center">
               <a

@@ -48,7 +48,7 @@ export function HowItWorks() {
 
         {/* Steps */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
-          {steps.map((step, index) => (
+          {steps.map((step) => (
             <div key={step.id} className="relative text-center group">
               {/* Step Number */}
               <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-gradient-to-r from-[#F9CCE3] to-[#712F91] text-[#1A1A1A] rounded-full flex items-center justify-center font-bold text-lg z-20 shadow-xl group-hover:scale-110 transition-transform duration-300">

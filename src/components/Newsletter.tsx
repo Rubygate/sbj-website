@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Mail, Sparkles } from "lucide-react"
+import { Sparkles } from "lucide-react"
 
 export function Newsletter() {
   const [email, setEmail] = useState("")

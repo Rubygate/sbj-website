@@ -1,4 +1,4 @@
-import { Star, Quote, Sparkles } from "lucide-react"
+import { Star, Quote } from "lucide-react"
 
 const testimonials = [
   {
@@ -37,7 +37,7 @@ export function Testimonials() {
             What Our Sparkle Lovers Are Saying
           </h2>
           <p className="text-xl text-[#6B7280] max-w-3xl mx-auto font-['Poppins']">
-            Don't just take our word for it.
+            Don&apos;t just take our word for it.
           </p>
         </div>
 
@@ -66,7 +66,7 @@ export function Testimonials() {
 
               {/* Testimonial Text */}
               <p className="text-[#6B7280] mb-8 leading-relaxed font-['Poppins']">
-                "{testimonial.text}"
+                &ldquo;{testimonial.text}&rdquo;
               </p>
 
               {/* Customer Info */}

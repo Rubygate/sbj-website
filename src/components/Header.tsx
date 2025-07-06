@@ -4,7 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { ShoppingBag, Menu, X, Search, User } from "lucide-react"
-import { cn } from "@/lib/utils"
+
 import { CountrySelector } from "./CountrySelector"
 
 export function Header() {

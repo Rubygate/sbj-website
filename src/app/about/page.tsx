@@ -1,7 +1,7 @@
 "use client"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
-import { Heart, Award, Users, Sparkles, MapPin, Star, Zap } from "lucide-react"
+import { Heart, Award, Users, Sparkles, Star, Zap } from "lucide-react"
 import { useState } from "react"
 
 export default function AboutPage() {
@@ -42,7 +42,7 @@ export default function AboutPage() {
                     We believe that every piece deserves to shine and our mission is to deliver high-quality rhinestone supplies and tailored blinging solutions that bring your creative ideas to life.
                   </p>
                   <p>
-                    From our wide range of rhinestones in every size and color to custom iron-on transfers and appliqués, Sparkles by Junetrain is your creative partner, we're here to support your blinging journey with premium materials and expert guidance.
+                    From our wide range of rhinestones in every size and color to custom iron-on transfers and appliqués, Sparkles by Junetrain is your creative partner, we&apos;re here to support your blinging journey with premium materials and expert guidance.
                   </p>
                 </div>
               </div>
@@ -132,7 +132,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Creative Support</h3>
                 <p className="text-gray-600">
-                  From beginners to professionals, we're here to support your rhinestone journey with expert guidance and inspiration.
+                  From beginners to professionals, we&apos;re here to support your rhinestone journey with expert guidance and inspiration.
                 </p>
               </div>
             </div>

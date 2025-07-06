@@ -46,7 +46,7 @@ export function WhyChooseUs() {
               Why Choose Us
             </h2>
             <p className="text-xl text-[#6B7280] max-w-3xl mx-auto font-['Poppins'] leading-relaxed">
-              We're not just another rhinestone supplier. We're your creative partner in bringing 
+              We&apos;re not just another rhinestone supplier. We&apos;re your creative partner in bringing 
               sparkle to life.
             </p>
           </div>

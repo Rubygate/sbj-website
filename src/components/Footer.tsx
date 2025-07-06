@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { Instagram, Facebook, Twitter, Mail, Phone, MapPin } from "lucide-react"
+import { Instagram, Facebook, Mail, Phone, MapPin } from "lucide-react"
 import { useCountry } from "@/contexts/CountryContext"
 
 export function Footer() {

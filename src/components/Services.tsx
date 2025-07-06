@@ -41,7 +41,7 @@ export function Services() {
             Our Services
           </h2>
           <p className="text-xl text-[#D6D6D6] max-w-3xl mx-auto font-['Poppins']">
-            From custom designs to ready-made sparkles, we've got everything you need to shine.
+            From custom designs to ready-made sparkles, we&apos;ve got everything you need to shine.
           </p>
         </div>
 

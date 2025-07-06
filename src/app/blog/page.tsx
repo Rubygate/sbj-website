@@ -2,7 +2,7 @@
 
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
-import { Calendar, Clock, User, ArrowRight, Search, Tag, Filter } from "lucide-react"
+import { Calendar, Clock, User, ArrowRight, Search } from "lucide-react"
 import { useState } from "react"
 import Link from "next/link"
 
@@ -10,7 +10,7 @@ import Link from "next/link"
 const blogPosts = [
   {
     id: 1,
-    title: "How to Create Stunning Rhinestone Designs: A Beginner's Guide",
+    title: "How to Create Stunning Rhinestone Designs: A Beginner&apos;s Guide",
     excerpt: "Learn the essential techniques and tools needed to create beautiful rhinestone designs that will make your projects sparkle and shine.",
     content: `
       <p>Discover the world of rhinestone crafting with our comprehensive beginner's guide. From choosing the right rhinestones to mastering application techniques, we'll walk you through everything you need to know to create stunning designs that will make your projects truly special.</p>
@@ -208,7 +208,7 @@ export default function BlogPage() {
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Sparkles Blog</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Discover tips, tutorials, and inspiration for all your rhinestone crafting projects. 
-            From beginner guides to advanced techniques, we've got everything you need to make your projects shine.
+            From beginner guides to advanced techniques, we&apos;ve got everything you need to make your projects shine.
           </p>
         </div>
 

@@ -2,7 +2,7 @@
 
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
-import { Filter, Search, Grid, List, Heart, ShoppingBag, Star, ChevronDown, ChevronRight } from "lucide-react"
+import { Search, Grid, List, Heart, ShoppingBag, Star, ChevronDown, ChevronRight } from "lucide-react"
 import { useCountry } from "@/contexts/CountryContext"
 import { useState } from "react"
 
