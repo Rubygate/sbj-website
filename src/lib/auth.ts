@@ -1,4 +1,3 @@
-import bcrypt from 'bcryptjs';
 import * as jose from 'jose';
 import { PrismaClient } from '@/generated/prisma';
 
@@ -12,15 +11,20 @@ export interface UserPayload {
 }
 
 export class AuthService {
-  // Hash password
+  // Hash password using Web Crypto API
   static async hashPassword(password: string): Promise<string> {
-    const saltRounds = 12;
-    return bcrypt.hash(password, saltRounds);
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+    const hash = await crypto.subtle.digest('SHA-256', data);
+    return Array.from(new Uint8Array(hash))
+      .map(b => b.toString(16).padStart(2, '0'))
+      .join('');
   }
 
-  // Verify password
+  // Verify password using Web Crypto API
   static async verifyPassword(password: string, hashedPassword: string): Promise<boolean> {
-    return bcrypt.compare(password, hashedPassword);
+    const hashedInput = await this.hashPassword(password);
+    return hashedInput === hashedPassword;
   }
 
   // Generate JWT token
