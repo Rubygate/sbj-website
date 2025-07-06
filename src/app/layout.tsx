@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { CountryProvider } from "@/contexts/CountryContext";
+import { UserProvider } from "@/contexts/UserContext";
 
 export const metadata: Metadata = {
   title: "Sparkles by Junetrain - Rhinestone Templates & Transfers",
@@ -29,7 +30,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased bg-white text-[#1A1A1A]">
         <CountryProvider>
-          {children}
+          <UserProvider>
+            {children}
+          </UserProvider>
         </CountryProvider>
       </body>
     </html>

@@ -2,9 +2,11 @@
 
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
-import { Search, Grid, List, Heart, ShoppingBag, Star, ChevronDown, ChevronRight } from "lucide-react"
+import { Search, Grid, List, Heart, ShoppingBag, Star, ChevronDown, ChevronRight, ArrowRight } from "lucide-react"
 import { useCountry } from "@/contexts/CountryContext"
+import { useUser } from "@/contexts/UserContext"
 import { useState } from "react"
+import Link from "next/link"
 
 // Mock products data for Sparkles by Junetrain
 const products = [
@@ -357,6 +359,7 @@ const priceRanges = ["Under $50", "$50 - $100", "$100 - $200", "Over $200"]
 
 export default function ShopPage() {
   const { country } = useCountry()
+  const { user } = useUser()
   const [isRhinestonesExpanded, setIsRhinestonesExpanded] = useState(false)
   const [isCustomOrdersExpanded, setIsCustomOrdersExpanded] = useState(false)
   const [isIronOnTransfersExpanded, setIsIronOnTransfersExpanded] = useState(false)
@@ -931,6 +934,48 @@ export default function ShopPage() {
           </div>
         </div>
       </main>
+
+      {/* Checkout Section */}
+      <section className="bg-gradient-to-r from-[#F9CCE3] to-[#712F91] py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold text-white font-['Playfair_Display'] mb-4">
+              Ready to Add Some Sparkle?
+            </h2>
+            <p className="text-white/90 text-lg mb-8 font-['Poppins'] max-w-2xl mx-auto">
+              {user 
+                ? "You're all set! Proceed to checkout to complete your purchase and start your rhinestone journey."
+                : "Sign in to your account to proceed with checkout and complete your purchase."
+              }
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              {user ? (
+                <Link
+                  href="/checkout"
+                  className="inline-flex items-center px-8 py-4 bg-white text-[#1A1A1A] font-semibold rounded-lg hover:bg-gray-50 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl font-['Poppins']"
+                >
+                  Proceed to Checkout
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+              ) : (
+                <Link
+                  href="/checkout"
+                  className="inline-flex items-center px-8 py-4 bg-white text-[#1A1A1A] font-semibold rounded-lg hover:bg-gray-50 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl font-['Poppins']"
+                >
+                  Sign In & Checkout
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+              )}
+              <Link
+                href="/shop"
+                className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-[#1A1A1A] transition-all duration-200 font-['Poppins']"
+              >
+                Continue Shopping
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>

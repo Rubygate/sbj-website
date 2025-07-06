@@ -6,9 +6,13 @@ import Image from "next/image"
 import { ShoppingBag, Menu, X, Search, User } from "lucide-react"
 
 import { CountrySelector } from "./CountrySelector"
+import { useUser } from "@/contexts/UserContext"
+import { AuthModal } from "./AuthModal"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
+  const { user, login, logout } = useUser()
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -47,9 +51,23 @@ export function Header() {
             <button className="p-2 text-[#D6D6D6] hover:text-[#F9CCE3] transition-colors">
               <Search className="w-5 h-5" />
             </button>
-            <Link href="/account" className="p-2 text-[#D6D6D6] hover:text-[#F9CCE3] transition-colors">
-              <User className="w-5 h-5" />
-            </Link>
+            {user ? (
+              <div className="flex items-center space-x-4">
+                <div className="text-[#D6D6D6] text-sm">
+                  Hi, {user.firstName}
+                </div>
+                <Link href="/profile" className="p-2 text-[#D6D6D6] hover:text-[#F9CCE3] transition-colors">
+                  <User className="w-5 h-5" />
+                </Link>
+              </div>
+            ) : (
+              <button 
+                onClick={() => setIsAuthModalOpen(true)}
+                className="p-2 text-[#D6D6D6] hover:text-[#F9CCE3] transition-colors"
+              >
+                <User className="w-5 h-5" />
+              </button>
+            )}
             <Link href="/cart" className="p-2 text-[#D6D6D6] hover:text-[#F9CCE3] transition-colors relative">
               <ShoppingBag className="w-5 h-5" />
               <span className="absolute -top-1 -right-1 bg-[#F9CCE3] text-[#1A1A1A] text-xs rounded-full w-5 h-5 flex items-center justify-center font-semibold">
@@ -85,9 +103,23 @@ export function Header() {
                 <button className="p-2 text-[#D6D6D6] hover:text-[#F9CCE3]">
                   <Search className="w-5 h-5" />
                 </button>
-                <Link href="/account" className="p-2 text-[#D6D6D6] hover:text-[#F9CCE3]">
-                  <User className="w-5 h-5" />
-                </Link>
+                {user ? (
+                  <>
+                    <div className="text-[#D6D6D6] text-sm">
+                      Hi, {user.firstName}
+                    </div>
+                    <Link href="/profile" className="p-2 text-[#D6D6D6] hover:text-[#F9CCE3]">
+                      <User className="w-5 h-5" />
+                    </Link>
+                  </>
+                ) : (
+                  <button 
+                    onClick={() => setIsAuthModalOpen(true)}
+                    className="p-2 text-[#D6D6D6] hover:text-[#F9CCE3]"
+                  >
+                    <User className="w-5 h-5" />
+                  </button>
+                )}
                 <Link href="/cart" className="p-2 text-[#D6D6D6] hover:text-[#F9CCE3] relative">
                   <ShoppingBag className="w-5 h-5" />
                   <span className="absolute -top-1 -right-1 bg-[#F9CCE3] text-[#1A1A1A] text-xs rounded-full w-5 h-5 flex items-center justify-center font-semibold">
@@ -98,6 +130,13 @@ export function Header() {
             </nav>
           </div>
         )}
+
+        {/* Auth Modal */}
+        <AuthModal
+          isOpen={isAuthModalOpen}
+          onClose={() => setIsAuthModalOpen(false)}
+          onSuccess={login}
+        />
       </div>
     </header>
   )
