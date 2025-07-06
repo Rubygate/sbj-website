@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import { PrismaClient } from '@prisma/client';
+import * as jose from 'jose';
+import { PrismaClient } from '@/generated/prisma';
 
 const prisma = new PrismaClient();
 
@@ -24,18 +24,36 @@ export class AuthService {
   }
 
   // Generate JWT token
-  static generateToken(payload: UserPayload): string {
+  static async generateToken(payload: UserPayload): Promise<string> {
     const secret = process.env.JWT_SECRET || 'your-secret-key';
-    return jwt.sign(payload, secret, { expiresIn: '24h' });
+    const encodedSecret = new TextEncoder().encode(secret);
+    
+    const token = await new jose.SignJWT(payload as any)
+      .setProtectedHeader({ alg: 'HS256' })
+      .setIssuedAt()
+      .setExpirationTime('24h')
+      .sign(encodedSecret);
+    
+    return token;
   }
 
   // Verify JWT token
-  static verifyToken(token: string): UserPayload | null {
+  static async verifyToken(token: string): Promise<UserPayload | null> {
     try {
       const secret = process.env.JWT_SECRET || 'your-secret-key';
-      const decoded = jwt.verify(token, secret) as UserPayload;
-      return decoded;
-    } catch (error) {
+      const encodedSecret = new TextEncoder().encode(secret);
+      
+      console.log('AuthService - Verifying token with secret length:', secret.length);
+      console.log('AuthService - Token to verify:', token.substring(0, 20) + '...');
+      
+      const { payload } = await jose.jwtVerify(token, encodedSecret);
+      console.log('AuthService - Token verified successfully for user:', payload.email);
+      
+      return payload as unknown as UserPayload;
+    } catch (error: any) {
+      console.error('AuthService - Token verification failed:', error);
+      console.error('AuthService - Error name:', error?.name);
+      console.error('AuthService - Error message:', error?.message);
       return null;
     }
   }

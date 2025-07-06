@@ -10,8 +10,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
 // Authentication & Users
@@ -50,8 +50,8 @@ model Product {
   sku         String   @unique
   category    String
   subcategory String?
-  tags        String[]
-  images      String[]
+  tags        String? // Comma-separated tags
+  images      String? // Comma-separated image URLs
   isActive    Boolean  @default(true)
   inStock     Boolean  @default(true)
   stockQuantity Int    @default(0)
@@ -63,6 +63,7 @@ model Product {
   // Relations
   orderItems OrderItem[]
   createdBy  User      @relation(fields: [createdById], references: [id])
+  createdById String
 
   @@map("products")
 }
@@ -74,7 +75,7 @@ model Customer {
   firstName String
   lastName  String
   phone     String?
-  address   Address?
+  addresses Address[] // One-to-many
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -82,6 +83,7 @@ model Customer {
   // Relations
   orders    Order[]
   createdBy User     @relation(fields: [createdById], references: [id])
+  createdById String
 
   @@map("customers")
 }
@@ -100,6 +102,7 @@ model Address {
 
   // Relations
   customer   Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  customerId String
 
   @@map("addresses")
 }
@@ -120,8 +123,10 @@ model Order {
 
   // Relations
   customer      Customer      @relation(fields: [customerId], references: [id])
+  customerId    String
   orderItems    OrderItem[]
   createdBy     User          @relation(fields: [createdById], references: [id])
+  createdById   String
 
   @@map("orders")
 }
@@ -147,7 +152,9 @@ model OrderItem {
 
   // Relations
   order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId   String
   product   Product  @relation(fields: [productId], references: [id])
+  productId String
 
   @@map("order_items")
 }
@@ -160,7 +167,7 @@ model BlogPost {
   content     String
   excerpt     String?
   featuredImage String?
-  tags        String[]
+  tags        String? // Comma-separated tags
   isPublished Boolean  @default(false)
   publishedAt DateTime?
   createdAt   DateTime @default(now())
@@ -168,6 +175,7 @@ model BlogPost {
 
   // Relations
   author      User     @relation(fields: [authorId], references: [id])
+  authorId    String
 
   @@map("blog_posts")
 }

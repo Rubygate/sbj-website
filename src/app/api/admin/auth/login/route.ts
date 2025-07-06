@@ -4,9 +4,11 @@ import { AuthService } from '@/lib/auth';
 export async function POST(request: NextRequest) {
   try {
     const { email, password } = await request.json();
+    console.log('Login attempt for:', email);
 
     // Validate input
     if (!email || !password) {
+      console.log('Missing email or password');
       return NextResponse.json(
         { error: 'Email and password are required' },
         { status: 400 }
@@ -15,8 +17,10 @@ export async function POST(request: NextRequest) {
 
     // Authenticate user
     const user = await AuthService.authenticateUser(email, password);
+    console.log('Authentication result:', user ? 'Success' : 'Failed');
     
     if (!user) {
+      console.log('Invalid credentials for:', email);
       return NextResponse.json(
         { error: 'Invalid credentials' },
         { status: 401 }
@@ -24,7 +28,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Generate JWT token
-    const token = AuthService.generateToken(user);
+    const token = await AuthService.generateToken(user);
+    console.log('Token generated successfully for user:', user.email);
 
     // Set HTTP-only cookie
     const response = NextResponse.json(
@@ -49,6 +54,7 @@ export async function POST(request: NextRequest) {
       path: '/',
     });
 
+    console.log('Cookie set successfully');
     return response;
 
   } catch (error) {

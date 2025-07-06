@@ -36,7 +36,7 @@ export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('all')
+  const [selectedCategory, setSelectedCategory] = useState('')
   const [showFilters, setShowFilters] = useState(false)
   const [showForm, setShowForm] = useState(false)
   const [editingProduct, setEditingProduct] = useState<Product | null>(null)
@@ -47,49 +47,154 @@ export default function ProductsPage() {
     const mockProducts: Product[] = [
       {
         id: '1',
-        name: 'Rhinestone Denim Jacket',
-        description: 'Beautiful bedazzled denim jacket with premium rhinestones',
-        price: 245.00,
-        salePrice: 199.00,
-        sku: 'RDJ-001',
-        category: 'Bedazzled Jackets',
-        subcategory: 'Denim',
-        tags: ['denim', 'jacket', 'rhinestones', 'bedazzled'],
+        name: 'Premium Rhinestone Pack - 2mm',
+        description: 'High-quality 2mm rhinestones in assorted colors, perfect for detailed work',
+        price: 24.99,
+        salePrice: 19.99,
+        sku: 'SBJ-RHIN-00001',
+        category: 'Rhinestones',
+        subcategory: '2mm',
+        tags: ['rhinestones', '2mm', 'assorted', 'premium'],
         images: ['/product1.jpg'],
         isActive: true,
         inStock: true,
-        stockQuantity: 15,
+        stockQuantity: 150,
         createdAt: '2024-01-15'
       },
       {
         id: '2',
-        name: 'Sparkle Silk Scarf',
-        description: 'Elegant silk scarf with crystal rhinestone accents',
-        price: 89.50,
-        sku: 'SSS-001',
-        category: 'Scarves & Accessories',
-        subcategory: 'Silk',
-        tags: ['silk', 'scarf', 'crystal', 'elegant'],
+        name: 'Custom Rhinestone Denim Jacket',
+        description: 'Hand-crafted denim jacket with custom rhinestone design',
+        price: 245.00,
+        sku: 'SBJ-CUST-00002',
+        category: 'Custom Orders',
+        subcategory: 'Denim Jackets',
+        tags: ['custom', 'denim', 'jacket', 'handmade'],
         images: ['/product2.jpg'],
         isActive: true,
         inStock: true,
-        stockQuantity: 25,
+        stockQuantity: 5,
         createdAt: '2024-01-20'
       },
       {
         id: '3',
-        name: 'Crystal Kimono',
-        description: 'Stunning kimono with intricate rhinestone patterns',
-        price: 320.00,
-        sku: 'CK-001',
-        category: 'Bedazzled Jackets',
-        subcategory: 'Kimonos',
-        tags: ['kimono', 'crystal', 'intricate', 'patterns'],
+        name: 'Iron-On Rhinestone Transfer - Floral',
+        description: 'Beautiful floral pattern iron-on rhinestone transfer',
+        price: 45.00,
+        sku: 'SBJ-IRON-00003',
+        category: 'Iron-On Rhinestone Transfers',
+        subcategory: 'Floral',
+        tags: ['iron-on', 'transfer', 'floral', 'pattern'],
         images: ['/product3.jpg'],
+        isActive: true,
+        inStock: true,
+        stockQuantity: 25,
+        createdAt: '2024-01-25'
+      },
+      {
+        id: '4',
+        name: 'Rhinestone Appliqué - Star Pattern',
+        description: 'Ready-to-sew rhinestone appliqué in star pattern',
+        price: 32.50,
+        sku: 'SBJ-APPL-00004',
+        category: 'Rhinestone Appliqués',
+        subcategory: 'Star Patterns',
+        tags: ['appliqué', 'star', 'sew-on', 'pattern'],
+        images: ['/product4.jpg'],
+        isActive: true,
+        inStock: true,
+        stockQuantity: 40,
+        createdAt: '2024-02-01'
+      },
+      {
+        id: '5',
+        name: 'Cheerleading Rhinestone Set',
+        description: 'Complete rhinestone set for cheerleading uniforms',
+        price: 89.99,
+        sku: 'SBJ-CHEE-00005',
+        category: 'Cheer & Sports Blings',
+        subcategory: 'Cheerleading',
+        tags: ['cheerleading', 'sports', 'uniform', 'complete-set'],
+        images: ['/product5.jpg'],
+        isActive: true,
+        inStock: true,
+        stockQuantity: 12,
+        createdAt: '2024-02-05'
+      },
+      {
+        id: '6',
+        name: 'Bedazzled Denim Jacket - Classic',
+        description: 'Classic denim jacket with premium rhinestone embellishments',
+        price: 189.00,
+        sku: 'SBJ-JACK-00006',
+        category: 'Bedazzled Jackets & Kimonos',
+        subcategory: 'Denim',
+        tags: ['denim', 'jacket', 'classic', 'bedazzled'],
+        images: ['/product6.jpg'],
+        isActive: true,
+        inStock: true,
+        stockQuantity: 8,
+        createdAt: '2024-02-10'
+      },
+      {
+        id: '7',
+        name: 'Rhinestone Silk Scarf - Elegant',
+        description: 'Elegant silk scarf with crystal rhinestone accents',
+        price: 75.00,
+        sku: 'SBJ-SCAR-00007',
+        category: 'Bedazzled Scarves & Headwear',
+        subcategory: 'Scarves & Wraps',
+        tags: ['silk', 'scarf', 'elegant', 'crystal'],
+        images: ['/product7.jpg'],
+        isActive: true,
+        inStock: true,
+        stockQuantity: 20,
+        createdAt: '2024-02-15'
+      },
+      {
+        id: '8',
+        name: 'Bedazzled Mini Skirt - Sparkle',
+        description: 'Mini skirt with dazzling rhinestone embellishments',
+        price: 125.00,
+        sku: 'SBJ-SKIR-00008',
+        category: 'Bedazzled Skirts',
+        subcategory: 'Mini',
+        tags: ['skirt', 'mini', 'sparkle', 'bedazzled'],
+        images: ['/product8.jpg'],
+        isActive: true,
+        inStock: true,
+        stockQuantity: 15,
+        createdAt: '2024-02-20'
+      },
+      {
+        id: '9',
+        name: 'Rhinestone Adhesive - Industrial Strength',
+        description: 'Industrial strength adhesive for permanent rhinestone application',
+        price: 18.99,
+        sku: 'SBJ-SUPP-00009',
+        category: 'Rhinestoning Supplies',
+        subcategory: 'Adhesives',
+        tags: ['adhesive', 'industrial', 'permanent', 'supplies'],
+        images: ['/product9.jpg'],
+        isActive: true,
+        inStock: true,
+        stockQuantity: 75,
+        createdAt: '2024-02-25'
+      },
+      {
+        id: '10',
+        name: 'Limited Edition Crystal Crown',
+        description: 'Exclusive limited edition crystal crown with premium rhinestones',
+        price: 299.99,
+        sku: 'SBJ-LIMI-00010',
+        category: 'Limited Edition Bling Items',
+        subcategory: 'Crowns',
+        tags: ['limited-edition', 'crown', 'crystal', 'exclusive'],
+        images: ['/product10.jpg'],
         isActive: true,
         inStock: false,
         stockQuantity: 0,
-        createdAt: '2024-01-25'
+        createdAt: '2024-03-01'
       }
     ]
     
@@ -98,18 +203,24 @@ export default function ProductsPage() {
   }, [])
 
   const categories = [
-    'all',
-    'Bedazzled Jackets',
-    'Scarves & Accessories',
+    'Custom Orders',
+    'Rhinestones',
+    'Iron-On Rhinestone Transfers',
+    'Rhinestone Appliqués',
+    'Cheer & Sports Blings',
+    'Bedazzled Jackets & Kimonos',
+    'Bedazzled Scarves & Headwear',
+    'Bedazzled Skirts',
     'Rhinestoning Supplies',
-    'Limited Edition Bling Items',
-    'Bedazzled Skirts'
+    'DIY Bling Kits',
+    'Rhinestone Wall Arts',
+    'Limited Edition Bling Items'
   ]
 
   const filteredProducts = products.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          product.sku.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory
+    const matchesCategory = selectedCategory === '' || product.category === selectedCategory
     return matchesSearch && matchesCategory
   })
 
@@ -270,12 +381,23 @@ export default function ProductsPage() {
               className="flex items-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors font-['Poppins']"
             >
               <Filter className="w-5 h-5 mr-2" />
-              {selectedCategory === 'all' ? 'All Categories' : selectedCategory}
+              {selectedCategory === '' ? 'All Categories' : selectedCategory}
               <ChevronDown className="w-4 h-4 ml-2" />
             </button>
             
             {showFilters && (
               <div className="absolute top-full left-0 mt-1 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+                <button
+                  onClick={() => {
+                    setSelectedCategory('')
+                    setShowFilters(false)
+                  }}
+                  className={`w-full text-left px-4 py-2 hover:bg-gray-50 transition-colors font-['Poppins'] ${
+                    selectedCategory === '' ? 'bg-[#F9CCE3]/20 text-[#712F91]' : ''
+                  }`}
+                >
+                  All Categories
+                </button>
                 {categories.map((category) => (
                   <button
                     key={category}
@@ -287,7 +409,7 @@ export default function ProductsPage() {
                       selectedCategory === category ? 'bg-[#F9CCE3]/20 text-[#712F91]' : ''
                     }`}
                   >
-                    {category === 'all' ? 'All Categories' : category}
+                    {category}
                   </button>
                 ))}
               </div>

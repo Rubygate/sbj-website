@@ -28,19 +28,127 @@ interface ProductFormProps {
 }
 
 const categories = [
-  'Bedazzled Jackets',
-  'Scarves & Accessories',
+  'Custom Orders',
+  'Rhinestones',
+  'Iron-On Rhinestone Transfers',
+  'Rhinestone Appliqués',
+  'Cheer & Sports Blings',
+  'Bedazzled Jackets & Kimonos',
+  'Bedazzled Scarves & Headwear',
+  'Bedazzled Skirts',
   'Rhinestoning Supplies',
-  'Limited Edition Bling Items',
-  'Bedazzled Skirts'
+  'DIY Bling Kits',
+  'Rhinestone Wall Arts',
+  'Limited Edition Bling Items'
 ]
 
 const subcategories = {
-  'Bedazzled Jackets': ['Denim', 'Kimonos', 'Leather', 'Blazers'],
-  'Scarves & Accessories': ['Silk', 'Wool', 'Cotton', 'Jewelry'],
-  'Rhinestoning Supplies': ['Hotfix Rhinestones', 'Flatback Rhinestones', 'Rhinestone Appliqués', 'Tools & Adhesives'],
-  'Limited Edition Bling Items': ['Seasonal', 'Collaborations', 'Custom Designs'],
-  'Bedazzled Skirts': ['Mini', 'Knee-length', 'Midi', 'Full-length']
+  'Rhinestones': [
+    'Hotfix Rhinestones',
+    'Flatback Rhinestones',
+    'Nail Art Rhinestones',
+    'Rhinestone Beads',
+    'Rhinestone Cabochons',
+    'Rhinestone Brooches',
+    'Rhinestone Buttons'
+  ],
+  'Custom Orders': [
+    'Custom Templates',
+    'Custom Iron-On Transfers',
+    'Custom Logos & Branding',
+    'Custom Initials',
+    'Custom Numbers',
+    'Custom Sports Blings',
+    'Custom Cheer Bows & Blings',
+    'Custom Sash'
+  ],
+  'Iron-On Rhinestone Transfers': [
+    'Birthday Transfers',
+    'Graduation Transfers',
+    'Christmas Transfers',
+    'Valentine\'s Day Transfers',
+    'Halloween Transfers',
+    'Easter Transfers',
+    'New Year Transfers',
+    'Bridal & Bachelorette',
+    'Baby Shower',
+    'Anniversary',
+    'Retirement',
+    'Family Reunion',
+    'Girls\' Trip',
+    'Quotes',
+    'Popular Phrases',
+    'Affirmations',
+    'Sassy & Trendy Sayings',
+    'Faith & Spiritual',
+    'Business & Boss Babe',
+    'Afrocentric',
+    'African Print-Inspired',
+    'Cultural Symbols',
+    'Black History Themes',
+    'Letters',
+    'Numbers',
+    'Icons & Symbols'
+  ],
+  'Rhinestone Appliqués': [
+    'Iron-On Appliqués',
+    'Sew-On Appliqués',
+    'Stick-On Appliqués',
+    'Rhinestone Ribbons',
+    'Rhinestone Tassels'
+  ],
+  'Cheer & Sports Blings': [
+    'Cheer Bows',
+    'Cheer Belts',
+    'Cheer Sashes',
+    'Hairbands & Clips',
+    'Team Name & Logo Transfers',
+    'Player Name & Number Sets',
+    'Sport Patches & Icons',
+    'Fan Bows & Caps',
+    'Sport Totes',
+    'Sport Family & Fan Blings'
+  ],
+  'Bedazzled Jackets & Kimonos': [
+    'Hip-Length',
+    'Knee-Length',
+    'Full-Length'
+  ],
+  'Bedazzled Scarves & Headwear': [
+    'Scarves & Wraps',
+    'Headbands',
+    'Hair Bows, ties'
+  ],
+  'Bedazzled Skirts': [
+    'Mini',
+    'Knee-Length',
+    'Midi',
+    'Full-Length'
+  ],
+  'Rhinestoning Supplies': [
+    'Starter Kits',
+    'Tool Sets',
+    'Custom Templates',
+    'Reusable Templates'
+  ],
+  'DIY Bling Kits': [
+    'Beginner Kits',
+    'Advanced Kits',
+    'Complete Sets',
+    'Tool Kits'
+  ],
+  'Rhinestone Wall Arts': [
+    'Wall Decorations',
+    'Framed Art',
+    'Hanging Pieces',
+    'Custom Designs'
+  ],
+  'Limited Edition Bling Items': [
+    'Seasonal',
+    'Collaborations',
+    'Custom Designs',
+    'Exclusive Collections'
+  ]
 }
 
 export default function ProductForm({ product, onSubmit, onCancel, isLoading = false }: ProductFormProps) {
@@ -63,6 +171,11 @@ export default function ProductForm({ product, onSubmit, onCancel, isLoading = f
 
   const [newTag, setNewTag] = useState('')
   const [errors, setErrors] = useState<Record<string, string>>({})
+
+  // Debug logging
+  console.log('ProductForm - Categories available:', categories.length)
+  console.log('ProductForm - Current category:', formData.category)
+  console.log('ProductForm - Available subcategories for current category:', formData.category ? subcategories[formData.category as keyof typeof subcategories]?.length : 0)
 
   useEffect(() => {
     if (product) {
@@ -152,7 +265,7 @@ export default function ProductForm({ product, onSubmit, onCancel, isLoading = f
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative z-10">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <div className="flex items-center">
@@ -340,10 +453,11 @@ export default function ProductForm({ product, onSubmit, onCancel, isLoading = f
                 <select
                   value={formData.category}
                   onChange={(e) => {
+                    console.log('Category changed to:', e.target.value)
                     handleInputChange('category', e.target.value)
                     handleInputChange('subcategory', '')
                   }}
-                  className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#712F91] focus:border-transparent transition-all duration-200 font-['Poppins'] ${
+                  className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#712F91] focus:border-transparent transition-all duration-200 font-['Poppins'] cursor-pointer ${
                     errors.category ? 'border-red-500' : 'border-gray-300'
                   }`}
                 >
@@ -366,8 +480,11 @@ export default function ProductForm({ product, onSubmit, onCancel, isLoading = f
                 </label>
                 <select
                   value={formData.subcategory}
-                  onChange={(e) => handleInputChange('subcategory', e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#712F91] focus:border-transparent transition-all duration-200 font-['Poppins']"
+                  onChange={(e) => {
+                    console.log('Subcategory changed to:', e.target.value)
+                    handleInputChange('subcategory', e.target.value)
+                  }}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#712F91] focus:border-transparent transition-all duration-200 font-['Poppins'] cursor-pointer"
                   disabled={!formData.category}
                 >
                   <option value="">Select subcategory</option>
