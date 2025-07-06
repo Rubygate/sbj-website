@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import { ArrowRight, Sparkles } from "lucide-react"
 
@@ -93,7 +95,7 @@ export function Hero() {
                 <Sparkles className="w-4 h-4 text-[#712F91] animate-pulse animation-delay-1000" />
               </div>
               
-              {/* Hero Video - Simplified for testing */}
+              {/* Hero Video */}
               <video
                 autoPlay
                 loop
@@ -101,11 +103,6 @@ export function Hero() {
                 playsInline
                 className="w-full h-full object-cover relative z-0"
                 preload="auto"
-                controls
-                onError={(e) => console.error('Video error:', e)}
-                onLoadStart={() => console.log('Video loading started')}
-                onCanPlay={() => console.log('Video can play')}
-                onLoadedData={() => console.log('Video data loaded')}
               >
                 <source src="/hero-video.mp4" type="video/mp4" />
                 <source src="/about-video.mp4" type="video/mp4" />
