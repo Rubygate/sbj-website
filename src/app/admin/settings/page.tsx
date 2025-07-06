@@ -2,12 +2,9 @@
 
 import { useState } from 'react'
 import { 
-  Settings, 
   Store, 
   Mail, 
-  Shield, 
   Palette,
-  Sparkles,
   Save
 } from 'lucide-react'
 

@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { 
-  BarChart3, 
   TrendingUp, 
   TrendingDown,
   Users,
@@ -20,9 +19,9 @@ interface AnalyticsData {
   revenueGrowth: number
   orderGrowth: number
   customerGrowth: number
-  topProducts: any[]
-  recentSales: any[]
-  monthlyRevenue: any[]
+  topProducts: Array<{name: string, sales: number, revenue: number}>
+  recentSales: Array<{id: string, customer: string, product: string, amount: number, date: string}>
+  monthlyRevenue: Array<{month: string, revenue: number}>
 }
 
 export default function AnalyticsPage() {
@@ -281,7 +280,7 @@ export default function AnalyticsPage() {
         </div>
         <div className="p-6">
           <div className="flex items-end justify-between h-64 space-x-2">
-            {analytics.monthlyRevenue.map((month, index) => {
+                         {analytics.monthlyRevenue.map((month) => {
               const maxRevenue = Math.max(...analytics.monthlyRevenue.map(m => m.revenue))
               const height = (month.revenue / maxRevenue) * 100
               return (

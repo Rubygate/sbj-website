@@ -75,7 +75,7 @@ export default function BlogPage() {
   }, [])
 
   const statuses = ['Published', 'Draft', 'Scheduled']
-  const categories = ['Tutorials', 'Techniques', 'Trends', 'News', 'Reviews']
+  // const categories = ['Tutorials', 'Techniques', 'Trends', 'News', 'Reviews']
 
   const filteredPosts = posts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||

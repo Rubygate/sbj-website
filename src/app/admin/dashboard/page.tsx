@@ -8,8 +8,7 @@ import {
   DollarSign, 
   TrendingUp, 
   TrendingDown,
-  Sparkles,
-  BarChart3
+  Sparkles
 } from 'lucide-react'
 
 interface DashboardStats {
@@ -17,8 +16,8 @@ interface DashboardStats {
   totalOrders: number
   totalCustomers: number
   totalRevenue: number
-  recentOrders: any[]
-  recentProducts: any[]
+  recentOrders: Array<{id: string, orderNumber: string, customer: string, amount: number, status: string}>
+  recentProducts: Array<{id: string, name: string, category: string, price: number}>
 }
 
 export default function AdminDashboard() {

@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import { 
   ShoppingCart, 
   Search, 
-  Filter, 
   Eye, 
   Package,
   Sparkles
