@@ -95,11 +95,12 @@ export function Hero() {
                 <Sparkles className="w-4 h-4 text-[#712F91] animate-pulse animation-delay-1000" />
               </div>
               
-              {/* Simple Video Test */}
+              {/* Hero Video - Updated */}
               <video
                 className="w-full h-full object-cover relative z-0"
                 controls
                 preload="metadata"
+                key="hero-video-updated"
               >
                 <source src="/hero-video.mp4" type="video/mp4" />
                 <p>Video not supported</p>

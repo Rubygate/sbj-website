@@ -72,7 +72,7 @@ export default function AboutPage() {
                     muted 
                     playsInline
                   >
-                    <source src="/about video.mp4" type="video/mp4" />
+                    <source src="/about-video.mp4" type="video/mp4" />
                     <source src="/about video.webm" type="video/webm" />
                     Your browser does not support the video tag.
                   </video>
