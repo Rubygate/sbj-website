@@ -95,18 +95,14 @@ export function Hero() {
                 <Sparkles className="w-4 h-4 text-[#712F91] animate-pulse animation-delay-1000" />
               </div>
               
-              {/* Hero Video */}
+              {/* Simple Video Test */}
               <video
-                autoPlay
-                loop
-                muted
-                playsInline
                 className="w-full h-full object-cover relative z-0"
-                preload="auto"
+                controls
+                preload="metadata"
               >
                 <source src="/hero-video.mp4" type="video/mp4" />
-                <source src="/about-video.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
+                <p>Video not supported</p>
               </video>
               
               {/* Subtle border glow effect */}
