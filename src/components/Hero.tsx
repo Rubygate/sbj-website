@@ -95,15 +95,23 @@ export function Hero() {
                 <Sparkles className="w-4 h-4 text-[#712F91] animate-pulse animation-delay-1000" />
               </div>
               
-              {/* Hero Video - Updated */}
+              {/* Hero Video */}
               <video
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="w-full h-full object-cover relative z-0"
-                controls
-                preload="metadata"
-                key="hero-video-updated"
+                preload="auto"
               >
                 <source src="/hero-video.mp4" type="video/mp4" />
-                <p>Video not supported</p>
+                <div className="w-full h-full bg-gradient-to-br from-[#F9CCE3] to-[#712F91] flex items-center justify-center text-white font-semibold">
+                  <div className="text-center">
+                    <Sparkles className="w-12 h-12 mx-auto mb-4 animate-pulse" />
+                    <p>Sparkles by Junetrain</p>
+                    <p className="text-sm opacity-80">Premium Rhinestone Solutions</p>
+                  </div>
+                </div>
               </video>
               
               {/* Subtle border glow effect */}
